@@ -3,7 +3,7 @@
     <el-button @click="handleChangeEditor('tm')">富文本编辑器</el-button>
     <el-button @click="handleChangeEditor('md')">markdown编辑器</el-button>
     <div class="container"></div>
-    <tinymce v-if="showTm" />
+    <tinymce v-if="showTm" v-model="content" />
     <markdown-editor v-if="showMd" />
   </div>
 </template>
@@ -20,8 +20,14 @@ export default {
   data() {
     return {
       showTm: false,
-      showMd: false
+      showMd: false,
+      content: ''
     }
+  },
+  created() {
+    // setTimeout(() => {
+    //   this.content = '123'
+    // }, 5000)
   },
   methods: {
     handleChangeEditor(v) {

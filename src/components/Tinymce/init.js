@@ -40,7 +40,30 @@ export const init = (_this) => {
     quickbars_selection_toolbar: quickbarsSelection,
     quickbars_insert_toolbar: quickbarsInsert,
     textpattern_patterns: tinymcePatterns, // 快捷键配置
-    setup: (editor) => { // 自定义上传组件
+    init_instance_callback: editor => {
+      if (_this.value) {
+        editor.setContent(_this.value)
+      }
+      _this.hasInit = true
+    },
+    setup: (editor) => {
+      editor.on('keydown', (e) => {
+        if (e.keyCode === 9) {
+          if (e.shiftKey) {
+            editor.execCommand('Outdent')
+          } else {
+            editor.execCommand('Indent')
+          }
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      })
+      editor.on('Input undo redo NodeChange Change execCommand SetContent', (e) => {
+        _this.hasChange = true
+        // editor.getContent({ format: ''text }) // 获取纯文本
+        _this.$emit('change', editor.getContent())
+      })
+      // 自定义上传组件
       editor.ui.registry.addButton('upload', {
         text: `<i class="el-icon-upload" style="font-size: 24px"></i>`,
         tooltip: '自定义上传',
@@ -63,7 +86,6 @@ export const init = (_this) => {
           editor.setContent('')
         }
       })
-      editor.on('change')
     }
   }
 }

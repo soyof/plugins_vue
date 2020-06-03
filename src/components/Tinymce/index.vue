@@ -36,12 +36,21 @@ export default {
   data() {
     return {
       id: `editor_${new Date().getTime()}`,
+      hasInit: false,
+      hasChange: false,
       config: {
         show: false
       },
-      init: {},
       content: '',
       isShow: false
+    }
+  },
+  watch: {
+    value(newVal) {
+      this.value = newVal
+      if (!this.hasChange && this.hasInit) {
+        tinymce.activeEditor.setContent(newVal)
+      }
     }
   },
   created() {
@@ -54,11 +63,12 @@ export default {
     })
   },
   beforeDestroy() {
-    document.querySelectorAll('textarea')[0] && document.querySelectorAll('textarea')[0].remove()
+    tinymce.activeEditor && tinymce.activeEditor.destroy()
+    // document.querySelectorAll('textarea')[0] && document.querySelectorAll('textarea')[0].remove()
   },
   methods: {
     handleUploadImg(url) {
-      const src = '' // 图片存储地址
+      // const src = '' // 图片存储地址
       this.config.show = false
       // 将上传后的图片插入
       tinymce.execCommand('mceInsertContent', false, `<img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589779358105&di=4e6494f792244c63ec46dd8ca08739c0&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180801%2F23%2F1533137122-vOrfsEHhpK.jpeg'>`)
