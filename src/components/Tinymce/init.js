@@ -14,6 +14,8 @@ export const init = (_this) => {
     draggable_modal: true, // 模态框允许拖动
     placeholder: '开始编写吧',
     theme: 'silver',
+    icons: 'custom',
+    icons_url: '/tinymce/icons/icons.js',
     language_url: '/tinymce/langs/zh_CN.js',
     language: 'zh_CN',
     skin_url: '/tinymce/skins/ui/oxide',
@@ -45,6 +47,11 @@ export const init = (_this) => {
         editor.setContent(_this.value)
       }
       _this.hasInit = true
+      editor.on('Input undo redo Change execCommand SetContent', (e) => {
+        _this.hasChange = true
+        // editor.getContent({ format: ''text }) // 获取纯文本
+        _this.$emit('change', editor.getContent())
+      })
     },
     setup: (editor) => {
       editor.on('keydown', (e) => {
@@ -57,11 +64,6 @@ export const init = (_this) => {
           e.preventDefault()
           e.stopPropagation()
         }
-      })
-      editor.on('Input undo redo NodeChange Change execCommand SetContent', (e) => {
-        _this.hasChange = true
-        // editor.getContent({ format: ''text }) // 获取纯文本
-        _this.$emit('change', editor.getContent())
       })
       // 自定义上传组件
       editor.ui.registry.addButton('upload', {

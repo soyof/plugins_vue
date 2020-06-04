@@ -6,10 +6,9 @@
 </template>
 <script>
 import UploadImage from '@components/UploadImage'
-import tinymce from 'tinymce/tinymce'
+import tinymce from './plugins'
 import 'tinymce/icons/default/icons'
 import 'tinymce/themes/silver'
-import './plugins'
 import { init } from './init'
 
 export default {
@@ -54,6 +53,7 @@ export default {
     }
   },
   created() {
+    console.log(tinymce)
     this.isShow = true
   },
   mounted() {
