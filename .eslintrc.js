@@ -14,7 +14,7 @@ module.exports = {
   ],
   rules: {
     'accessor-pairs': 2,
-	'arrow-parens': 0,
+	  'arrow-parens': 0,
     'arrow-spacing': [
       2, {
         'before': true,

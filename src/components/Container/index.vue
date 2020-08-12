@@ -1,9 +1,10 @@
 <template>
   <div class="button-area">
     <el-button @click="handleChangeEditor('tm')">富文本编辑器</el-button>
+    <el-button @click="handleChangeEditor('simpleMd')">markdown编辑器</el-button>
     <el-button @click="handleChangeEditor('md')">markdown编辑器</el-button>
     <div class="container"></div>
-    <tinymce v-if="showTm" v-model="content" />
+    <tinymce v-if="showSimpleTm" v-model="content" />
     <markdown-editor v-if="showMd" />
   </div>
 </template>
@@ -20,6 +21,7 @@ export default {
   data() {
     return {
       showTm: false,
+      showSimpleTm: false,
       showMd: false,
       content: ''
     }
@@ -34,8 +36,8 @@ export default {
       if (v === 'tm') {
         this.showTm = true
         this.showMd = false
-      } else {
-        this.showTm = false
+      } else if (v === 'simpleMd') {
+        this.showSimpleTm = false
         this.showMd = true
       }
     }

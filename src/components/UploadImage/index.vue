@@ -47,9 +47,9 @@ export default {
   .el-dialog {
 
   }
-  /deep/.el-upload {
+  .el-upload {
     width: 100%;
-    /deep/ .el-upload-dragger {
+    .el-upload-dragger {
       width: 100%;
     }
   }

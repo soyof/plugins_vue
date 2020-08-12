@@ -17,11 +17,11 @@ const routes = [
   { path: '/404', component: () => import('@/views/404') },
   {
     path: '/',
-    redirect: '/index'
+    redirect: '/home'
   },
   {
-    path: '/index',
-    name: 'index',
+    path: '/home',
+    name: 'home',
     meta: {
       title: '首页'
     },

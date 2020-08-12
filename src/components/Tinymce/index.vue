@@ -6,10 +6,11 @@
 </template>
 <script>
 import UploadImage from '@components/UploadImage'
-import tinymce from './plugins'
+import tinymce from 'tinymce'
+import './plugins'
 import 'tinymce/icons/default/icons'
 import 'tinymce/themes/silver'
-import { init } from './init'
+import { defaultInit } from './init'
 
 export default {
   name: 'Tinymce',
@@ -21,20 +22,22 @@ export default {
     event: 'change'
   },
   props: {
-    isEdit: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
     value: {
       type: String,
       required: false,
       default: ''
+    },
+    init: {
+      type: Object,
+      required: false,
+      default() {
+        return {}
+      }
     }
   },
   data() {
     return {
-      id: `editor_${new Date().getTime()}`,
+      id: `editor_${new Date().getTime()}_${Math.random().toString(36).substr(2)}`,
       hasInit: false,
       hasChange: false,
       config: {
@@ -44,7 +47,7 @@ export default {
       isShow: false
     }
   },
-  watch: {
+  watch: { // 实现双向绑定
     value(newVal) {
       this.value = newVal
       if (!this.hasChange && this.hasInit) {
@@ -53,41 +56,41 @@ export default {
     }
   },
   created() {
-    console.log(tinymce)
     this.isShow = true
   },
   mounted() {
+    const defaultStyle = defaultInit(this).content_style || ''
+    const initStyle = this.init.content_style || ''
+    const contentStyle = defaultStyle + initStyle
+    const defaultSetup = defaultInit(this).setup
+    const initSetup = this.init.setup
     tinymce.init({
       selector: `#${this.id}`,
-      ...init(this)
+      ...defaultInit(this),
+      ...this.init,
+      content_style: contentStyle,
+      setup: (editor) => {
+        defaultSetup && defaultSetup(editor)
+        initSetup && initSetup(editor)
+      }
     })
   },
   beforeDestroy() {
     tinymce.activeEditor && tinymce.activeEditor.destroy()
-    // document.querySelectorAll('textarea')[0] && document.querySelectorAll('textarea')[0].remove()
   },
   methods: {
     handleUploadImg(url) {
-      // const src = '' // 图片存储地址
       this.config.show = false
-      // 将上传后的图片插入
       tinymce.execCommand('mceInsertContent', false, `<img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589779358105&di=4e6494f792244c63ec46dd8ca08739c0&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180801%2F23%2F1533137122-vOrfsEHhpK.jpeg'>`)
     },
+    /**
+     * @params {Object}   blobInfo 上传的文件 包含base64 blob等
+     * @params {callback} success 成功的回调
+     * @params {callback} failure 失败的回调
+     */
     uploadImage(blobInfo, success, failure) {
+      // 发送请求, 获取图片路径后, 将路径传给success
       success('http://pic.sc.chinaz.com/files/pic/pic9/202005/apic25209.jpg')
-    },
-    fileUpload(cb, value, type) {
-      if (type.filetype === 'file') {
-        cb('mypage.html', { text: 'My text' })
-      }
-      // Provide image and alt text for the image dialog
-      if (type.filetype === 'image') {
-        cb('myimage.jpg', { alt: 'My alt text' })
-      }
-      // Provide alternative source and posted for the media dialog
-      if (type.filetype === 'media') {
-        cb('movie.mp4', { source2: 'alt.ogg', poster: 'image.jpg' })
-      }
     }
   }
 }
@@ -98,6 +101,6 @@ export default {
     font-size: 12px;
     position: relative;
     width: 100%;
-    height: calc(100vh);
+    height: 100%;
   }
 </style>

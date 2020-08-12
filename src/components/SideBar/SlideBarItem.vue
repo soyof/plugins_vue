@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.path)
+    console.log(123)
   },
   methods: {
     setPaddingLeft() {
@@ -66,12 +66,5 @@ export default {
       width: 100%;
       height: 100%;
     }
-    .slide-item {
-      .title {
-      }
-    }
-  }
-  .item {
-
   }
 </style>
