@@ -15,6 +15,7 @@ export const init = (_this) => {
     images_upload_handler: _this.uploadImage,
     paste_data_images: true, // 允许粘贴图像
     paste_as_text: true,
+    image_advtab: true,
     templates: tinymceTemplates,
     visual: false, // 颜色辅助
     // 快速工具栏

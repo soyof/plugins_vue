@@ -9,5 +9,4 @@ export const quickbarsSelection = 'bold italic underline strikethrough | link h2
 
 export const quickbarsInsert = 'quickimage quicktable'
 
-export const tinymceTemplates = [
-  { title: '标题', description: '描述', content: '内容' }]
+export const tinymceTemplates = [{ title: '标题', description: '描述', content: '内容' }]

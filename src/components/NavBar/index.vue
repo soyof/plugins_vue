@@ -3,8 +3,9 @@
     <div class="title">
       自定义侧导航
     </div>
-    <div class="opera">
-      <el-button size="mini" @click="handleEdit">编辑</el-button>
+    <div class="user-info">
+      <div class="user-avatar">X</div>
+      <div class="name">Mr.X</div>
     </div>
   </div>
 </template>
@@ -13,9 +14,6 @@
 export default {
   name: 'NavBar',
   methods: {
-    handleEdit() {
-      this.$router.push('/page/editor')
-    }
   }
 }
 </script>
@@ -33,6 +31,20 @@ export default {
       color: #fff;
       line-height: 30px;
     }
-    .opera {}
+    .user-info {
+      display: flex;
+      align-items: center;
+      .user-avatar {
+        @include center();
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #fff;
+        margin-right: 15px;
+      }
+      .name {
+        color: #fff;
+      }
+    }
   }
 </style>
