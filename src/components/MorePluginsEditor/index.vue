@@ -42,6 +42,7 @@ export default {
     uploadImage(blobInfo, success, failure) {
       // 发送请求, 获取图片路径后, 将路径传给success
       success('http://pic.sc.chinaz.com/files/pic/pic9/202005/apic25209.jpg')
+      // success(`data:${blobInfo.blob().type};base64,${blobInfo.base64()}`) // 直接使用base64图片
     }
   }
 }
