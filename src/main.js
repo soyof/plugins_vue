@@ -14,6 +14,10 @@ Object.keys(filters).forEach(key => {
 import 'normalize.css' // resets css
 import '@/styles/index.scss' // global style
 
+import zoom from '@/directives/imgZoom'
+
+Vue.directive('zoom', zoom)
+
 import '@/permission' // permission control
 Vue.use(element)
 Vue.config.productionTip = false
