@@ -16,7 +16,7 @@
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^6.2.0",
-    "qs": "^6.9.4",
+    "qs": "^6.9.7",
     "sass-resources-loader": "^2.1.1",
     "tinymce": "^5.9.2",
     "tinymce-vue-h": "^5.9.2",
