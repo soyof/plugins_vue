@@ -18,7 +18,7 @@
     "path-to-regexp": "^6.2.0",
     "qs": "^6.9.4",
     "sass-resources-loader": "^2.1.1",
-    "tinymce": "^5.9.2",
+    "tinymce": "^5.10.7",
     "tinymce-vue-h": "^5.9.2",
     "vue": "^2.6.12",
     "vue-router": "^3.4.9",
