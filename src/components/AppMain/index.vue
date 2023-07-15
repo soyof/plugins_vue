@@ -29,7 +29,7 @@ export default {
   }
 </style>
 
-<style lang="scss">
+<style lang="less">
   .el-popup-parent--hidden {
     .fixed-header {
       padding-right: 15px;

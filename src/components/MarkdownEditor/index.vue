@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .markdown-box {
     width: 100%;
     /*height: calc(100vh - 50px);*/

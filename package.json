@@ -18,8 +18,8 @@
     "path-to-regexp": "^6.2.0",
     "qs": "^6.9.4",
     "sass-resources-loader": "^2.1.1",
-    "tinymce": "^5.9.2",
-    "tinymce-vue-h": "^5.9.2",
+    "tinymce": "^5.10.7",
+    "tinymce-vue-h": "^5.10.7",
     "vue": "^2.6.12",
     "vue-router": "^3.4.9",
     "vuex": "^3.6.0"
@@ -37,9 +37,8 @@
     "copy-webpack-plugin": "^5.1.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.14.1",
+    "less-loader": "^5.0.0",
     "postcss-pxtorem": "^5.1.1",
-    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {

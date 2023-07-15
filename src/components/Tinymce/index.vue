@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .editor-box {
     font-size: 12px;
     position: relative;

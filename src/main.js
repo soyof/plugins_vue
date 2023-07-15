@@ -12,7 +12,7 @@ Object.keys(filters).forEach(key => {
 })
 
 import 'normalize.css' // resets css
-import '@/styles/index.scss' // global style
+import '@/styles/index.less' // global style
 
 import zoom from '@/directives/imgZoom'
 

@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 ul {
   display: flex;
   font-size: 16px;
@@ -30,7 +30,7 @@ ul {
   li {
     margin: 0 12px;
     &:hover {
-      color: $text-color
+      color: @text-color
     }
   }
 }
