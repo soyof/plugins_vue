@@ -14,6 +14,8 @@ tinymce版本为5.30+
 
 相关配置请参考`src/components/tinymce`目录,[本文项目github地址](https://github.com/MrH-OS/plugins_vue)
 
+详见[个人博客](https://soyof.github.io/soyof/pages/865b99/)
+
 ### tinymce 配置说明
 
 ```javascript
